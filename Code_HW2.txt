@@ -7,32 +7,33 @@ Additionally, I made a few more changes to each VM instance:
     [mysqld]
     skip-networking=0
     skip-bind-address
-  4. And for the personal project on GCP, I added a firewall rule as follows:
-    {
-      "allowed": [
-        {
-          "IPProtocol": "all"
-        }
-      ],
-      "creationTimestamp": "2022-02-22T09:51:43.312-08:00",
-      "description": "",
-      "direction": "INGRESS",
-      "disabled": false,
-      "enableLogging": false,
-      "id": "1942049412573862976",
-      "kind": "compute#firewall",
-      "logConfig": {
-        "enable": false
-      },
-      "name": "allow-inbound-traffic",
-      "network": "projects/idyllic-parser-310104/global/networks/default",
-      "priority": 1000,
-      "selfLink": "projects/idyllic-parser-310104/global/firewalls/allow-inbound-traffic",
-      "sourceRanges": [
-        "10.128.0.2",
-        "10.128.0.3",
-        "34.69.212.61",
-        "34.69.134.109"
-      ]
-    }
+
+And for the project on GCP, I added a firewall rule as follows:
+  {
+    "allowed": [
+      {
+        "IPProtocol": "all"
+      }
+    ],
+    "creationTimestamp": "2022-02-22T09:51:43.312-08:00",
+    "description": "",
+    "direction": "INGRESS",
+    "disabled": false,
+    "enableLogging": false,
+    "id": "1942049412573862976",
+    "kind": "compute#firewall",
+    "logConfig": {
+      "enable": false
+    },
+    "name": "allow-inbound-traffic",
+    "network": "projects/idyllic-parser-310104/global/networks/default",
+    "priority": 1000,
+    "selfLink": "projects/idyllic-parser-310104/global/firewalls/allow-inbound-traffic",
+    "sourceRanges": [
+      "10.128.0.2",
+      "10.128.0.3",
+      "34.69.212.61",
+      "34.69.134.109"
+    ]
+  }
   
