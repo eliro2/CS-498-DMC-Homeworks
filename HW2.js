@@ -34,4 +34,37 @@ app.get('/greeting', (req,res) => {
 // Handle insert operations to our database
 app.post('/register', (req,res) => {
   let n = req.body
+  n = n.replace(/^[0-9\s]*|[+*\r\n]/g, '');
+  query = `INSERT INTO Users (username) VALUES ('`+n+`');`;
+  connection2.query(query, (e,r,f) => {
+    console.log(r);
+    res.json({'message': 'Add Successful', 'users':r});
+  });
+});
 
+// Handle listing of users
+app.get('/list', (req,res) => {
+  query = 'SELECT username FROM Users';
+  connection2.query(query, (e,r,f) => {
+    let nameList = []
+    for (const i in r) {
+      nameList.push(r[i].username);
+    }
+    res.json({"users": nameList});
+  });
+});
+
+// Handle clearing of user from database
+app.post('/clear', (req,res) => {
+  query = 'TRUNCATE Users';
+  connection2.query(query, (e,r,f) => {
+    res.json({'message': 'Removed Users'});
+  });
+});
+
+var http = require('http').Server(app);
+
+const PORT = 80;
+http.listen(PORT, function() {
+  console.log('Listening');
+});
