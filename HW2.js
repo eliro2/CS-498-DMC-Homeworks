@@ -33,7 +33,7 @@ app.get('/greeting', (req,res) => {
 
 // Handle insert operations to our database
 app.post('/register', (req,res) => {
-  let n = req.body
+  let n = req.body.username;
   n = n.replace(/^[0-9\s]*|[+*\r\n]/g, '');
   query = `INSERT INTO Users (username) VALUES ('`+n+`');`;
   connection2.query(query, (e,r,f) => {
