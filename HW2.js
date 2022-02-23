@@ -62,6 +62,7 @@ app.post('/clear', (req,res) => {
   });
 });
 
+// To show program is running and to connect to socket
 var http = require('http').Server(app);
 
 const PORT = 80;
